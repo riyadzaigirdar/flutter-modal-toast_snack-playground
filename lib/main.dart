@@ -116,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   showBottomSheet() {
-    return showModalBottomSheet<void>(
+    showModalBottomSheet<void>(
         context: context,
         builder: (BuildContext context) {
           return Container(
