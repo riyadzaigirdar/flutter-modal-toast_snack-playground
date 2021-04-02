@@ -43,12 +43,20 @@ A new Flutter project.
 # show bottom sheet
 [flutter doc](https://api.flutter.dev/flutter/material/showModalBottomSheet.html)
     showBottomSheet() {
-    return showModalBottomSheet<void>(
+    showModalBottomSheet<void>(
+        // barrierColor: Colors
+        //     .transparent, // <-- IMPORTANT POPUP HOLE JEI HALKA KALO BARRIER ASE
+        backgroundColor: Colors
+            .transparent, // <-- IMPORTANT KONAR BACKGROUD BORDER RADIUS DILE VISIBLE HOY
         context: context,
         builder: (BuildContext context) {
           return Container(
             height: 200,
-            color: Colors.amber,
+            decoration: BoxDecoration(
+                color: Colors.amber,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0))),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
