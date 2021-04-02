@@ -33,6 +33,12 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isChecked = false;
   TextEditingController controller = TextEditingController();
 
+  void restoreStateToFactoryDefault() {
+    controller.text = "";
+    isChecked = false;
+    setState(() {});
+  }
+
   Future createDialog(BuildContext context) async {
     return showDialog(
         context: context,
@@ -106,9 +112,34 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {},
       ),
     ));
-    controller.text = "";
-    isChecked = false;
-    setState(() {});
+    restoreStateToFactoryDefault();
+  }
+
+  showBottomSheet() {
+    return showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 200,
+            color: Colors.amber,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Text('Modal BottomSheet'),
+                  ElevatedButton(
+                    child: const Text('Close BottomSheet'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      restoreStateToFactoryDefault();
+                    },
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   @override
@@ -132,7 +163,8 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () async {
             // createDialog(context).then((value) => {print(value)});
             var result = await createDialog(context);
-            showSnack(context, result);
+            // showSnack(context, result);
+            showBottomSheet();
           },
         ),
       ),

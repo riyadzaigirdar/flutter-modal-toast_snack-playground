@@ -40,6 +40,35 @@ A new Flutter project.
         ));
     }
 
+# show bottom sheet
+
+    showBottomSheet() {
+    return showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 200,
+            color: Colors.amber,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Text('Modal BottomSheet'),
+                  ElevatedButton(
+                    child: const Text('Close BottomSheet'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      restoreStateToFactoryDefault();
+                    },
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+    }
+
 ### alert dialog and snackbar
 
     import 'package:flutter/material.dart';
