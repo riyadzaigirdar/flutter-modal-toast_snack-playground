@@ -41,7 +41,7 @@ A new Flutter project.
     }
 
 # show bottom sheet
-
+[flutter doc](https://api.flutter.dev/flutter/material/showModalBottomSheet.html)
     showBottomSheet() {
     return showModalBottomSheet<void>(
         context: context,
